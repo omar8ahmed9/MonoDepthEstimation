@@ -1,0 +1,25 @@
+Model: Apple Depth Pro
+
+Evaluation split:
+- Used the official split from data/splits/endovis/test_files.txt
+- Evaluated on 551 test samples
+
+Dataset / adapter details:
+- Input images were read from the prepared SCARED dataset layout:
+  SCARED_prepared/{train|test}/datasetX/keyframeY/data/left/<frame_id>.png
+- Frame paths were mapped from the official split entries of the form:
+  datasetX/keyframeY frame_id l
+
+Ground truth:
+- Ground truth depth was taken from EndoMUST/splits/endovis/gt_depths.npz
+- Verified that EndoMUST test_files.txt matches the official benchmark test_files.txt exactly before reuse
+
+Prediction details:
+- Depth Pro inference was run on each RGB image
+- Predicted depth maps were resized to ground-truth resolution before metric computation
+- Predictions were clipped to [1e-3, 150.0]
+
+Reporting setting:
+- Results are raw predictions
+- No median scaling
+- No scale alignment

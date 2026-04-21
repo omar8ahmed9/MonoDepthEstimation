@@ -1,0 +1,10 @@
+# Local workspace metadata
+.codex
+
+# Nested project repos used locally; keep the parent repo focused on shared docs/data/results
+endoDAC/
+PPSNet/
+
+# Large exported result artifacts; keep metrics/manifests, ignore heavy arrays and images
+results/**/exported_depth_maps/**/*.npy
+results/**/exported_depth_maps/**/*.png

@@ -1,2 +1,2 @@
-model,setting,samples,abs_rel,sq_rel,rmse,rmse_log,a1
-Depth Pro,raw,551,0.981473,53.962685,55.661307,4.313277,0.000000
+model,setting,samples,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3
+Depth Pro,raw,551,0.981473,53.962685,55.661307,4.313277,0.000000,0.000000,0.000000

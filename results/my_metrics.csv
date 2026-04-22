@@ -1,0 +1,2 @@
+Model,Dataset,Split,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3,scaling
+MonoPCC,SCARED,endovis test,0.051,0.349,4.488,0.072,0.983,0.998,1.000,median

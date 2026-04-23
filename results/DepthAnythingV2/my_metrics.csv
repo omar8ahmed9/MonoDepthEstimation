@@ -1,0 +1,2 @@
+Model,Dataset,Split,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3,scaling
+DepthAnythingV2,SCARED,endovis test,0.3076394,10.10485373,22.58011786,0.43958292,0.51156903,0.76738551,0.88545008,median

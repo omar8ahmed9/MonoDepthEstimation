@@ -8,3 +8,8 @@ PPSNet/
 # Large exported result artifacts; keep metrics/manifests, ignore heavy arrays and images
 results/**/exported_depth_maps/**/*.npy
 results/**/exported_depth_maps/**/*.png
+
+models/
+
+# Numpy compressed arrays
+*.npz

@@ -5,7 +5,7 @@ from pathlib import Path
 
 
 RAW_SCARED_ROOT = Path("/l/users/omar.mohamed/datasets/SCARED")
-OUTPUT_ROOT = Path("/l/users/omar.mohamed/datasets/SCARED_prepared")
+OUTPUT_ROOT = Path("/l/users/omar.mohamed/datasets/SCARED_prepared_fixed")
 
 
 def dataset_id_to_raw_name(dataset_id: int) -> str:
@@ -22,10 +22,6 @@ def dataset_id_to_prepared_name(dataset_id: int) -> str:
 
 def keyframe_id_to_prepared_name(keyframe_id: int) -> str:
     return f"keyframe{keyframe_id}"
-
-
-def split_name_for_dataset(dataset_id: int) -> str:
-    return "train" if dataset_id < 8 else "test"
 
 
 def extract_tar_if_needed(tar_path: Path, output_dir: Path) -> None:
@@ -45,6 +41,10 @@ def extract_tar_if_needed(tar_path: Path, output_dir: Path) -> None:
 
 
 def copy_file_if_needed(src: Path, dst: Path) -> None:
+    if not src.exists():
+        print(f"[skip] missing file: {src}")
+        return
+
     dst.parent.mkdir(parents=True, exist_ok=True)
     if dst.exists():
         print(f"[skip] already exists: {dst}")
@@ -54,6 +54,52 @@ def copy_file_if_needed(src: Path, dst: Path) -> None:
     shutil.copy2(src, dst)
 
 
+def extract_rgb_frames_if_needed(video_path: Path, left_dir: Path, right_dir: Path) -> None:
+    left_dir.mkdir(parents=True, exist_ok=True)
+    right_dir.mkdir(parents=True, exist_ok=True)
+
+    if not video_path.exists():
+        print(f"[skip] missing video: {video_path}")
+        return
+
+    left_has_frames = any(left_dir.iterdir())
+    right_has_frames = any(right_dir.iterdir())
+    if left_has_frames and right_has_frames:
+        print(f"[skip] frames already extracted: {left_dir} and {right_dir}")
+        return
+
+    print(f"[extract] {video_path} -> left/right frames")
+
+    # top half -> left
+    cmd_left = [
+        "ffmpeg",
+        "-y",
+        "-i",
+        str(video_path),
+        "-vf",
+        "crop=1280:1024:0:0",
+        "-start_number",
+        "1",
+        str(left_dir / "%010d.png"),
+    ]
+
+    # bottom half -> right
+    cmd_right = [
+        "ffmpeg",
+        "-y",
+        "-i",
+        str(video_path),
+        "-vf",
+        "crop=1280:1024:0:1024",
+        "-start_number",
+        "1",
+        str(right_dir / "%010d.png"),
+    ]
+
+    subprocess.run(cmd_left, check=True)
+    subprocess.run(cmd_right, check=True)
+
+
 def prepare_one_keyframe(dataset_id: int, keyframe_id: int) -> None:
     raw_dataset = dataset_id_to_raw_name(dataset_id)
     raw_keyframe = keyframe_id_to_raw_name(keyframe_id)
@@ -61,12 +107,10 @@ def prepare_one_keyframe(dataset_id: int, keyframe_id: int) -> None:
     prepared_dataset = dataset_id_to_prepared_name(dataset_id)
     prepared_keyframe = keyframe_id_to_prepared_name(keyframe_id)
 
-    split = split_name_for_dataset(dataset_id)
-
     raw_keyframe_root = RAW_SCARED_ROOT / raw_dataset / raw_keyframe
     raw_data_dir = raw_keyframe_root / "data"
 
-    prepared_keyframe_root = OUTPUT_ROOT / split / prepared_dataset / prepared_keyframe
+    prepared_keyframe_root = OUTPUT_ROOT / prepared_dataset / prepared_keyframe
     prepared_data_dir = prepared_keyframe_root / "data"
 
     left_dir = prepared_data_dir / "left"
@@ -79,11 +123,9 @@ def prepare_one_keyframe(dataset_id: int, keyframe_id: int) -> None:
     scene_points_dir.mkdir(parents=True, exist_ok=True)
     frame_data_dir.mkdir(parents=True, exist_ok=True)
 
-    # Extract archives
     extract_tar_if_needed(raw_data_dir / "scene_points.tar.gz", scene_points_dir)
     extract_tar_if_needed(raw_data_dir / "frame_data.tar.gz", frame_data_dir)
 
-    # Copy static files that may be useful later
     static_files = [
         "Left_Image.png",
         "Right_Image.png",
@@ -100,38 +142,14 @@ def prepare_one_keyframe(dataset_id: int, keyframe_id: int) -> None:
         if src.exists():
             copy_file_if_needed(src, prepared_keyframe_root / name)
 
-    # Keep original RGB video too, and extract frames for EndoMUST
     rgb_video = raw_data_dir / "rgb.mp4"
     if rgb_video.exists():
         copy_file_if_needed(rgb_video, prepared_data_dir / "rgb.mp4")
-        extract_rgb_frames_if_needed(rgb_video, left_dir)
+        extract_rgb_frames_if_needed(rgb_video, left_dir, right_dir)
 
-def extract_rgb_frames_if_needed(video_path: Path, output_dir: Path) -> None:
-    output_dir.mkdir(parents=True, exist_ok=True)
-
-    if not video_path.exists():
-        print(f"[skip] missing video: {video_path}")
-        return
-
-    if any(output_dir.iterdir()):
-        print(f"[skip] frames already extracted: {output_dir}")
-        return
-
-    print(f"[extract] {video_path} -> {output_dir}")
-    cmd = [
-        "ffmpeg",
-        "-i",
-        str(video_path),
-        "-start_number",
-        "1",
-        str(output_dir / "%010d.png"),
-    ]
-    subprocess.run(cmd, check=True)
 
 def main() -> None:
     OUTPUT_ROOT.mkdir(parents=True, exist_ok=True)
-    (OUTPUT_ROOT / "train").mkdir(exist_ok=True)
-    (OUTPUT_ROOT / "test").mkdir(exist_ok=True)
 
     print("Raw dataset root:", RAW_SCARED_ROOT)
     print("Prepared dataset root:", OUTPUT_ROOT)

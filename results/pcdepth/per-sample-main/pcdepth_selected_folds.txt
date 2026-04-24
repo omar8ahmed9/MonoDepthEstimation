@@ -1,0 +1,8 @@
+Model: pcdepth
+Selection mode: explicit
+
+Explicit splits:
+  - test
+
+Generated per-sample CSVs:
+  - test: /home/omar.mohamed/projects/MonoDepthEstimation/results/pcdepth/per-sample-main/test_per_sample.csv (rows=551, skipped=0)

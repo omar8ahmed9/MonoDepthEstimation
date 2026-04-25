@@ -1,2 +1,0 @@
-timestamp_utc,eval_split,model_type,load_weights_folder,ext_disp_to_eval,eval_mono,eval_stereo,disable_median_scaling,pred_depth_scale_factor,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3,abs_rel_ci_low,abs_rel_ci_high,sq_rel_ci_low,sq_rel_ci_high,rmse_ci_low,rmse_ci_high,rmse_log_ci_low,rmse_log_ci_high,a1_ci_low,a1_ci_high,a2_ci_low,a2_ci_high,a3_ci_low,a3_ci_high,average_inference_time_ms
-2026-04-22T00:00:00+00:00,endovis,dares,/l/users/saif.alkindi/projects/ai7102_project/DARES/pretrained/best_weights,,True,False,False,1,0.094,1.025,7.594,0.126,0.928,0.989,0.996,,,,,,,,,,,,,,,

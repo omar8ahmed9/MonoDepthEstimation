@@ -1,2 +1,0 @@
-Model,Dataset,Split,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3,scaling
-DARES,SCARED,endovis test,0.052,0.356,4.479,0.073,0.980,0.998,1.000,median

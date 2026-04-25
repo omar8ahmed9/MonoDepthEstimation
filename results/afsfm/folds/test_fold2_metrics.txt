@@ -1,0 +1,10 @@
+-> Loading weights from ../../pretrained/Model_trained_end_to_end
+-> Computing predictions with size 320x256
+-> Evaluating
+   Mono evaluation - using median scaling
+ Scaling ratios | med: 168.340 | std: 0.311
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 | 
+&   0.107  &   1.363  &   8.781  &   0.147  &   0.882  &   0.980  &   0.995  \\
+
+-> Done!

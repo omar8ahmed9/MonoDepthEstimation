@@ -1,0 +1,9 @@
+Total samples    : 2177
+Valid samples    : 2160
+Skipped samples  : 17
+First skipped    : dataset7/keyframe4 1549 l
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.066  &   0.539  &   5.220  &   0.092  &   0.957  &   0.992  &   0.998  \\
+
+-> Done!

@@ -1,0 +1,8 @@
+Total samples    : 2014
+Valid samples    : 2012
+Skipped samples  : 2
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.030  &   0.127  &   2.319  &   0.043  &   0.992  &   1.000  &   1.000  \\
+
+-> Done!

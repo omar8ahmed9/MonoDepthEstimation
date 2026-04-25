@@ -1,0 +1,2 @@
+Model,Dataset,Split,abs_rel,sq_rel,rmse,rmse_log,a1,a2,a3,scaling
+AF-SfMLearner,SCARED,endovis test,0.148,2.753,11.57,0.184,0.787,0.948,0.991,median

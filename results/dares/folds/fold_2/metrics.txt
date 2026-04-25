@@ -1,0 +1,11 @@
+-> Loading weights from /l/users/saif.alkindi/projects/ai7102_project/DARES/pretrained/best_weights
+LoRA params initialized!
+-> Computing predictions with size 320x256
+-> Evaluating
+   Mono evaluation - using median scaling
+ Scaling ratios | med: 233.868 | std: 0.234
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 | 
+&   0.030  &   0.119  &   2.413  &   0.044  &   0.995  &   1.000  &   1.000  \\
+
+-> Done!

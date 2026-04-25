@@ -21,7 +21,7 @@ This folder contains the evaluation results of **AF-SfMLearner** on the **SCARED
 
 ## 📁 Folder Structure
 
-- `metrics.txt` → Main test performance  
+- `metrics.csv` → Main test performance  
 - `folds/` → 5-fold evaluation results  
 - `summary/` → Aggregated fold statistics and rankings  
 - `per-sample-main/` → Per-sample error analysis  

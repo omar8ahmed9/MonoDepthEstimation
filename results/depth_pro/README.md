@@ -1,79 +1,66 @@
-# Depth Pro Results (Endoscopic Depth Estimation)
+# Depth Pro Results (SCARED Dataset)
 
-This folder contains the evaluation results of **Depth Pro** on the **SCARED dataset**, following the same evaluation protocol used for other models where applicable.
+This folder contains the complete evaluation results for Depth Pro on the SCARED dataset, following the standardized evaluation pipeline used across all models in this project.
 
----
-
-## 📊 Evaluation Setup
+## Evaluation Setup
 
 - Model: Depth Pro (pretrained)
-- Dataset: SCARED (prepared, fixed version)
-- Evaluation mode: Monocular (with median scaling)
+- Dataset: SCARED (fixed version)
+  /l/users/omar.mohamed/datasets/SCARED_prepared_fixed
+- Evaluation Mode: Monocular with median scaling
 - Input: Left RGB images
-- Resolution: Native (resized internally by model)
 
-### Metrics
+Ground Truth:
+- Main test: Provided depth maps
+- Folds: Derived from scene_points (Z-axis, absolute value)
 
-The following standard depth estimation metrics are reported:
+## Metrics
 
-- Absolute Relative Error (Abs Rel)
-- Squared Relative Error (Sq Rel)
-- Root Mean Squared Error (RMSE)
-- RMSE (log)
-- Accuracy under threshold:
-  - δ < 1.25 (a1)
-  - δ < 1.25² (a2)
-  - δ < 1.25³ (a3)
+- Abs Rel
+- Sq Rel
+- RMSE
+- RMSE log
+- a1 (δ < 1.25)
+- a2 (δ < 1.25²)
+- a3 (δ < 1.25³)
 
----
+## Folder Structure
 
-## 📁 Folder Structure
+results/depth_pro/
+├── metrics.csv
+├── folds/
+│   ├── test_main_metrics.txt
+│   ├── test_fold1_metrics.txt
+│   ├── test_fold2_metrics.txt
+│   ├── test_fold3_metrics.txt
+│   ├── test_fold4_metrics.txt
+│   ├── test_fold5_metrics.txt
+│   └── test_main_pred.npz
+├── summary/
+├── per-sample-main/
+├── visualizations/
+└── frozen_visualizations/
 
-- `metrics.csv` → Main test set performance  
-- `metrics.txt` → Raw output log (optional, for reference)  
+## Main Test Results
 
----
+Abs Rel   : 0.0699  
+Sq Rel    : 0.6519  
+RMSE      : 6.026  
+RMSE log  : 0.0964  
+a1        : 0.9528  
+a2        : 0.9945  
+a3        : 0.9988  
 
-## 📈 Main Test Results
+## Cross-Validation (5 Folds)
 
-| Model      | Dataset | Split         | abs_rel | sq_rel | rmse  | rmse_log | a1     | a2     | a3     | scaling |
-|------------|--------|---------------|--------|--------|-------|----------|--------|--------|--------|---------|
-| Depth Pro  | SCARED | endovis test  | 0.0699 | 0.6519 | 6.026 | 0.0964   | 0.9528 | 0.9945 | 0.9988 | median  |
+Mean Abs Rel ≈ 3.42  
+Performance varies significantly across folds  
+Lower consistency compared to main test split  
 
----
+## Status
 
-## ⚠️ Notes on Evaluation
-
-- Median scaling was applied to ensure fair comparison with other monocular depth estimation models.
-- Ground truth depth for Depth Pro evaluation was derived from the **scene_points** data by extracting the Z-axis and applying absolute value transformation.
-- Invalid values (NaN, zero, or out-of-range depths) were filtered using a validity mask.
-
----
-
-## ❗ Cross-Validation (Folds)
-
-Cross-validation across the 5 folds was **not performed for Depth Pro**.
-
-This is due to differences in ground truth handling:
-- Depth Pro requires per-frame depth reconstruction from 3D scene geometry (`scene_points`)
-- Other models use precomputed ground truth depth maps (`gt_depths.npz`)
-- This leads to inconsistencies when directly applying the same fold evaluation pipeline
-
----
-
-## 🧠 Discussion
-
-- Depth Pro performs strongly on the SCARED dataset after applying median scaling.
-- The model achieves high accuracy (a1 > 0.95), indicating good alignment with ground truth structure.
-- However, compared to domain-specific models (e.g., DARES), Depth Pro:
-  - is significantly slower
-  - requires additional preprocessing for ground truth
-  - is less straightforward to integrate into standardized evaluation pipelines
-
----
-
-## ✅ Status
-
-✔ Main test evaluation completed  
-✔ Results standardized and formatted  
-✔ Ready for comparison and reporting  
+✔ Main test completed  
+✔ 5-fold evaluation completed  
+✔ Analysis pipeline completed  
+✔ Visualizations generated  
+✔ Ready for report

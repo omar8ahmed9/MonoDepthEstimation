@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+mkdir -p /l/users/saif.alkindi/projects/ai7102_project/MonoDepthEstimation/results/depth_pro/per-sample-main/selected
+
+python /l/users/saif.alkindi/projects/ai7102_project/MonoDepthEstimation/scripts/depth_pro/select_qualitative_samples.py \
+  --per_sample_dir /l/users/saif.alkindi/projects/ai7102_project/MonoDepthEstimation/results/depth_pro/per-sample-main \
+  --out_dir /l/users/saif.alkindi/projects/ai7102_project/MonoDepthEstimation/results/depth_pro/per-sample-main/selected \
+  --model_name depth_pro_main \
+  --metric abs_rel \
+  --count 5 \
+  --min_valid_ratio 0.05 \
+  --min_valid_pixels 50000 \
+  --folds test

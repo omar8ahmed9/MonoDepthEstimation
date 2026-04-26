@@ -1,0 +1,8 @@
+Model: depth_pro
+Selection mode: explicit
+
+Explicit splits:
+  - test
+
+Generated per-sample CSVs:
+  - test: /l/users/saif.alkindi/projects/ai7102_project/MonoDepthEstimation/results/depth_pro/per-sample-main/test_per_sample.csv (rows=551, skipped=0)

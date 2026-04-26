@@ -1,0 +1,8 @@
+metric,best_fold,best_value,worst_fold,worst_value
+abs_rel,test_fold5,2.839,test_fold4,4.205
+sq_rel,test_fold2,36.064,test_fold4,68.236
+rmse,test_fold1,7.551,test_fold4,13.279
+rmse_log,test_fold5,0.804,test_fold4,1.036
+a1,test_fold1,0.388,test_fold4,0.224
+a2,test_fold1,0.6,test_fold4,0.434
+a3,test_fold1,0.747,test_fold4,0.616

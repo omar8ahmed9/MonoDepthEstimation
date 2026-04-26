@@ -1,0 +1,8 @@
+Model: EndoFASt3r
+Selection mode: explicit
+
+Explicit splits:
+  - test
+
+Generated per-sample CSVs:
+  - test: /home/khuyen.pham/MonoDepthEstimation/results/EndoFASt3r/per-sample-main/test_per_sample.csv (rows=551, skipped=0)

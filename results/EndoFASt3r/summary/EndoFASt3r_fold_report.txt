@@ -1,0 +1,29 @@
+=== PER-SPLIT SUMMARY ===
+test_main    | total= 551 | valid= 551 | skipped=   0 | skip%= 0.000 | abs_rel=0.051 | rmse=4.527 | a1=0.979
+test_fold1   | total=2177 | valid=2160 | skipped=  17 | skip%= 0.781 | abs_rel=0.063 | rmse=4.860 | a1=0.965
+test_fold2   | total=2014 | valid=2012 | skipped=   2 | skip%= 0.099 | abs_rel=0.029 | rmse=2.422 | a1=0.994
+test_fold3   | total=2274 | valid=2274 | skipped=   0 | skip%= 0.000 | abs_rel=0.045 | rmse=3.745 | a1=0.995
+test_fold4   | total=2223 | valid=2223 | skipped=   0 | skip%= 0.000 | abs_rel=0.063 | rmse=7.385 | a1=0.947
+test_fold5   | total=2271 | valid=2271 | skipped=   0 | skip%= 0.000 | abs_rel=0.079 | rmse=6.156 | a1=0.934
+
+=== MAIN TEST VS 5-FOLD STATS ===
+total_samples  | main=551.000000 | fold_mean=2191.800000 | fold_std=107.045318 | min=2014.000000 | max=2274.000000
+valid_samples  | main=551.000000 | fold_mean=2188.000000 | fold_std=108.708325 | min=2012.000000 | max=2274.000000
+skipped_samples | main=0.000000 | fold_mean=3.800000 | fold_std=7.429670 | min=0.000000 | max=17.000000
+skip_pct       | main=0.000000 | fold_mean=0.176000 | fold_std=0.340911 | min=0.000000 | max=0.781000
+abs_rel        | main=0.051000 | fold_mean=0.055800 | fold_std=0.019215 | min=0.029000 | max=0.079000
+sq_rel         | main=0.362000 | fold_mean=0.532200 | fold_std=0.389900 | min=0.123000 | max=1.075000
+rmse           | main=4.527000 | fold_mean=4.913600 | fold_std=1.951150 | min=2.422000 | max=7.385000
+rmse_log       | main=0.073000 | fold_mean=0.077800 | fold_std=0.025528 | min=0.044000 | max=0.106000
+a1             | main=0.979000 | fold_mean=0.967000 | fold_std=0.027414 | min=0.934000 | max=0.995000
+a2             | main=0.998000 | fold_mean=0.995400 | fold_std=0.004879 | min=0.989000 | max=1.000000
+a3             | main=1.000000 | fold_mean=0.998800 | fold_std=0.002168 | min=0.995000 | max=1.000000
+
+=== HARDEST / EASIEST FOLDS ===
+abs_rel    | best=test_fold2 (0.029000) | worst=test_fold5 (0.079000)
+sq_rel     | best=test_fold2 (0.123000) | worst=test_fold5 (1.075000)
+rmse       | best=test_fold2 (2.422000) | worst=test_fold4 (7.385000)
+rmse_log   | best=test_fold2 (0.044000) | worst=test_fold5 (0.106000)
+a1         | best=test_fold3 (0.995000) | worst=test_fold5 (0.934000)
+a2         | best=test_fold2 (1.000000) | worst=test_fold5 (0.989000)
+a3         | best=test_fold2 (1.000000) | worst=test_fold5 (0.995000)

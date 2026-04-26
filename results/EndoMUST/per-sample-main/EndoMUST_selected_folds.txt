@@ -1,0 +1,8 @@
+Model: EndoMUST
+Selection mode: explicit
+
+Explicit splits:
+  - test
+
+Generated per-sample CSVs:
+  - test: /home/khuyen.pham/MonoDepthEstimation/results/EndoMUST/per-sample-main/test_per_sample.csv (rows=551, skipped=0)

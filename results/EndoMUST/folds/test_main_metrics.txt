@@ -1,0 +1,9 @@
+
+Total samples   : 551
+Valid samples   : 551
+Skipped samples : 0
+
+   abs_rel |  sq_rel |    rmse | rmse_log |      a1 |      a2 |      a3 | 
+&   0.049  &   0.333  &   4.384  &   0.069  &   0.982  &   0.998  &   1.000  \\
+
+-> Done!

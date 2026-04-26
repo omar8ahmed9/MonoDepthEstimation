@@ -1,0 +1,11 @@
+Total samples    : 2014
+Valid samples    : 2012
+Skipped samples  : 2
+First skipped    : dataset2/keyframe4	1932	l
+
+Scaling ratios | med: 0.305 | std: 0.146
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.215  &   5.085  &   16.054  &   0.304  &   0.666  &   0.871  &   0.938  \\
+
+-> Done!

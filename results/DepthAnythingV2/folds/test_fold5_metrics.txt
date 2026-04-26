@@ -1,0 +1,10 @@
+Total samples    : 2271
+Valid samples    : 2271
+Skipped samples  : 0
+
+Scaling ratios | med: 0.392 | std: 0.389
+
+   abs_rel |   sq_rel |     rmse | rmse_log |       a1 |       a2 |       a3 |
+&   0.402  &   21.303  &   26.651  &   0.453  &   0.498  &   0.712  &   0.823  \\
+
+-> Done!

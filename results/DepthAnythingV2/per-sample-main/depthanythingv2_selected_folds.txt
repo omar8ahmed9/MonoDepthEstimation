@@ -1,0 +1,8 @@
+Model: depthanythingv2
+Selection mode: explicit
+
+Explicit splits:
+  - test
+
+Generated per-sample CSVs:
+  - test: /home/hamdan.alhadhrami/MonoDepthEstimation/results/DepthAnythingV2/per-sample-main/test_per_sample.csv (rows=551, skipped=0)
